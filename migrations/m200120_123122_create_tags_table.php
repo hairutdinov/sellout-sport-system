@@ -36,7 +36,7 @@ class m200120_123122_create_tags_table extends Migration
             'news_id',
             '{{%news}}',
             'id',
-            'RESTRICT'
+            'CASCADE'
         );
     }
 
