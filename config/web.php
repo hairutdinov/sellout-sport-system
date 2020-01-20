@@ -51,6 +51,10 @@ $config = [
             ],
         ],
 
+      'assetManager' => [
+        'appendTimestamp' => true,
+      ],
+
     ],
     'params' => $params,
 ];
