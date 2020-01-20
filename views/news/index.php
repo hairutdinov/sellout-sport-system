@@ -10,17 +10,23 @@ use yii\helpers\Url;
 
 $this->title = 'News';
 $this->params['breadcrumbs'][] = $this->title;
+\antkaz\vue\VueAsset::register($this);
+
 ?>
+
+
 <div class="news-index">
 
   <h1><?= Html::encode($this->title) ?></h1>
+
+  <?php \yii\widgets\Pjax::begin(['id' => 'notes']); ?>
 
   <p>
       <?= Html::a('Create News', ['create'], ['class' => 'btn btn-success']) ?>
   </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-    <?php \yii\widgets\Pjax::begin(); ?>
+
     <?= GridView::widget([
       'dataProvider' => $dataProvider,
       'filterModel' => $searchModel,
@@ -33,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'title',
         'author',
 //        'urlToImage:ntext',
-          'publishedAt',
+        'publishedAt',
           //'content:ntext',
 
         [
@@ -52,10 +58,14 @@ $this->params['breadcrumbs'][] = $this->title;
           'header' => 'Действия',
           'template' => '{view} {update} {delete}',
           'buttons' => [
-            'update' => function($url, $dataProvider, $key) {
-                return Html::button('Р', ['value'=> Url::to(['news/update','id' => $dataProvider->id]),
-                  'class' => 'btn-update',
-                  'data-pjax' => '0',]);},
+            'update' => function ($url, $dataProvider, $key) {
+                return Html::a('edit', ['news/update', 'id' => $dataProvider->id], [
+                  'id' => $dataProvider->id,
+                  'value' => Url::to(['news/update', 'id' => $dataProvider->id]),
+                  'class' => 'update-news',
+//                  'data-pjax' => '0',
+                ]);
+            },
           ],
         ],
       ],
@@ -65,11 +75,13 @@ $this->params['breadcrumbs'][] = $this->title;
       'layout' => "{items}\n{summary}\n{pager}",
 
     ]); ?>
-    <?php \yii\widgets\Pjax::end(); ?>
+    <?php if (@isset($model)): ?>
+        <?= $this->render('_form',[
+          'model' => $model,
+        ]) ?>
+    <?php endif; ?>
 
-</div>
 
 
-<div class="news-update">
-
+  <?php \yii\widgets\Pjax::end(); ?>
 </div>
