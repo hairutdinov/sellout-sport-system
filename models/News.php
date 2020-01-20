@@ -45,12 +45,12 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'author' => 'Author',
+            'title' => 'Заголовок',
+            'author' => 'Автор',
             'url' => 'Url',
-            'urlToImage' => 'Url To Image',
-            'publishedAt' => 'Published At',
-            'content' => 'Content',
+            'urlToImage' => 'Url изображения',
+            'publishedAt' => 'Дата новости',
+            'content' => 'Текст новости',
         ];
     }
 
@@ -63,4 +63,5 @@ class News extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Tags::className(), ["id_news" => "id"]);
     }
+
 }
