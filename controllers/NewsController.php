@@ -90,7 +90,12 @@ class NewsController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->render('update', [
+        $searchModel = new NewsSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+          'searchModel' => $searchModel,
+          'dataProvider' => $dataProvider,
             'model' => $model,
         ]);
     }
