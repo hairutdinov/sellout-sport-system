@@ -71,6 +71,13 @@ class NewsApi
 
     public function get()
     {
+
+        /*$lastNewsPublishedTime = $this->getLastNews()->publishedAt;
+
+        if ($lastNewsPublishedTime) {
+            $this->setParameter("from", $lastNewsPublishedTime);
+        }*/
+
         $data = http_build_query($this->parameters);
 
         $ch = curl_init(Url::to([$this->url], "https") . "?" . $data);
@@ -134,7 +141,9 @@ class NewsApi
                     $inserted++;
 
                     $tags = new Tags();
+                    $tags->setNewsId($model->id);
                     $tags->parse($article["content"]);
+                    $tags->db_save();
 
                     continue;
                 }
@@ -151,5 +160,10 @@ class NewsApi
         return compact('results', 'inserted', 'not_inserted');
     }
 
+
+    public function getLastNews()
+    {
+        return News::find()->orderBy("publishedAt DESC")->limit(1)->one();
+    }
 
 }

@@ -46,13 +46,7 @@ class SiteController extends Controller
         $news->setParameter("pageSize", "100");
         $news->get();
 
-        $tags = new Tags();
-        $tags->parse("On Monday, Jan. 20 starting at 6:50 a.m. EST, NASA astronauts Jessica Meir and Christina Koch will step outside of the International Space Station into the vacuum of space together. The duo will wrap up the work of installing new lithium-ion batteries to upgr… [+98 chars]");
-
-        die;
         $news->save();
-        die;
-
         $response = $news->getArticles();
 
         return $this->render('index', compact('response'));
