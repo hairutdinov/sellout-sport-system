@@ -3,6 +3,10 @@ body {
     height: 100%;
 }
 
+img {
+    max-width: 100%;
+}
+
 .wrap {
     min-height: 100%;
     height: auto;
@@ -94,6 +98,14 @@ a.desc:after {
 .nav li > form > button.logout {
     padding: 15px;
     border: none;
+}
+
+.news-table {
+
+}
+
+.news-table img {
+    width: 400px;
 }
 
 @media(max-width:767px) {
