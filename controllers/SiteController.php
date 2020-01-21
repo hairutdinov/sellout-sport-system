@@ -39,8 +39,11 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        return $this->render('index');
+    }
 
-
+    public function actionSave()
+    {
         $news = new NewsApi("https://newsapi.org/v2/top-headlines", "83f517558ad24c76981a9c46b11ba2f6");
         $news->setParameter("country", "us");
         $news->setParameter("pageSize", "100");
@@ -48,8 +51,7 @@ class SiteController extends Controller
 
         $news->save();
         $response = $news->getArticles();
-
-        return $this->render('index', compact('response'));
+        return false;
     }
 
 
