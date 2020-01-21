@@ -45,7 +45,7 @@ $this->registerJs($js);
         <div class="col-sm-10"><?= $form->field($model, 'content')->textarea(['rows' => 6]) ?></div>
 
         <div class="form-group col-sm-10">
-            <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
         </div>
       </div>
 

@@ -8,7 +8,7 @@ use yii\helpers\Url;
 /* @var $searchModel app\models\NewsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'News';
+$this->title = 'Новости';
 $this->params['breadcrumbs'][] = $this->title;
 \antkaz\vue\VueAsset::register($this);
 
@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <?php \yii\widgets\Pjax::begin(['id' => 'notes']); ?>
 
   <p>
-      <?= Html::a('Create News', ['/news/create'], ['class' => 'btn btn-success']) ?>
+      <?= Html::a('Создать новость', ['/news/create'], ['class' => 'btn btn-success']) ?>
   </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
