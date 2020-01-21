@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <?php \yii\widgets\Pjax::begin(['id' => 'notes']); ?>
 
   <p>
-      <?= Html::a('Create News', ['create'], ['class' => 'btn btn-success']) ?>
+      <?= Html::a('Create News', ['/news/create'], ['class' => 'btn btn-success']) ?>
   </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -59,11 +59,11 @@ $this->params['breadcrumbs'][] = $this->title;
           'template' => '{view} {update} {delete}',
           'buttons' => [
             'update' => function ($url, $dataProvider, $key) {
-                return Html::a('edit', ['news/update', 'id' => $dataProvider->id], [
+                return Html::a(Html::tag('i', '', ['class'=> 'fa fa-edit']), ['news/update', 'id' => $dataProvider->id], [
                   'id' => $dataProvider->id,
-                  'value' => Url::to(['news/update', 'id' => $dataProvider->id]),
+                  'value' => Url::to(['/news/update', 'id' => $dataProvider->id]),
                   'class' => 'update-news',
-//                  'data-pjax' => '0',
+                  //'data-pjax' => '0',
                 ]);
             },
           ],
