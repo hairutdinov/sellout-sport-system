@@ -48,8 +48,8 @@ class Tags extends \yii\db\ActiveRecord
         return [
           'id' => 'ID',
           'news_id' => 'News ID',
-          'name' => 'Name',
-          'number_of_repetitions' => 'Number Of Repetitions',
+          'name' => 'Наименование',
+          'number_of_repetitions' => 'Общее количество тегов в системе',
         ];
     }
 
