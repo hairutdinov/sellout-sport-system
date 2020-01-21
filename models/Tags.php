@@ -101,7 +101,7 @@ class Tags extends \yii\db\ActiveRecord
 
 
         foreach ($repeated_tags_arr as $tag => $num_of_repeats) {
-            $tag_in_db = self::find()->where(["news_id" => $this->news_id, "name" => $tag])->limit(1)->one();
+            /*$tag_in_db = self::find()->where(["news_id" => $this->news_id, "name" => $tag])->limit(1)->one();
 
             if ($tag_in_db) {
                 if ($tag_in_db->updateCounters(["number_of_repetitions" => $num_of_repeats])) {
@@ -110,7 +110,7 @@ class Tags extends \yii\db\ActiveRecord
                     $errors["update_tag"][] = compact('tag', 'num_of_repeats');
                 }
                 continue;
-            }
+            }*/
 
             $modelData = [
               "news_id" => $this->news_id,
